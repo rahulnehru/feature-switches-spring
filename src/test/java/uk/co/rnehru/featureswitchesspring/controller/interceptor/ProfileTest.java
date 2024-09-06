@@ -7,11 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import uk.co.rnehru.featureswitchesspring.TestApplication;
 
-import static uk.co.rnehru.featureswitchesspring.controller.interceptor.ProfileInterceptor.INVALID_PROFILE_ERR;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static uk.co.rnehru.featureswitchesspring.controller.interceptor.ProfileInterceptor.INVALID_PROFILE_ERR;
 
 @SpringBootTest(classes = TestApplication.class, properties = {"spring.profiles.active=production"})
 @AutoConfigureMockMvc
