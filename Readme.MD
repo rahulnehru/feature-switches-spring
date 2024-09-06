@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'uk.co.rnehru:feature-switches-spring:1.0.0'    
+    implementation 'com.github.rahulnehru:feature-switches-spring:1.0.0'
 }
 ```
 
