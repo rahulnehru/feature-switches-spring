@@ -3,6 +3,5 @@ jdk:
 before_install:
   - sdk install java 19.3.0-amzn
   - sdk use java 19.3.0-amzn
-  - sdk install gradle
 install:
-  - gradle build
+  - ./gradlew build
