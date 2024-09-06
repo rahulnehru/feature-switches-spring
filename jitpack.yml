@@ -3,7 +3,6 @@ jdk:
 before_install:
   - sdk install java 19.3.0-amzn
   - sdk use java 19.3.0-amzn
-  - sdk install maven
-  - mvn -v
+  - sdk install gradle
 install:
-  - mvn clean install
+  - gradle build
