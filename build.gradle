@@ -42,7 +42,7 @@ publishToMavenLocal { dependsOn build }
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            from components.java
+            artifact jar // Ensures the main JAR is used without the "plain" suffix
             versionMapping {
                 usage('java-api') {
                     fromResolutionOf('runtimeClasspath')
