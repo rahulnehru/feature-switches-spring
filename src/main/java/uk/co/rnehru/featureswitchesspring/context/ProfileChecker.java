@@ -2,6 +2,7 @@ package uk.co.rnehru.featureswitchesspring.context;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -13,7 +14,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 /**
  * Configuration checks if the `toggling` profile is active and adds an interceptor to the application.
  */
-@Configuration
+@AutoConfiguration
 public class ProfileChecker implements WebMvcConfigurer {
 
     private static final Logger LOGGER = getLogger(ProfileChecker.class);
