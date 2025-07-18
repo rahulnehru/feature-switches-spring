@@ -1,5 +1,6 @@
 package uk.co.rnehru.featureswitchesspring.controller.errorhandling;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,7 +25,7 @@ public final class ValidationError {
     public ResponseEntity<Object> handleValidationError(final AssertionError ae,
                                                         final WebRequest request) {
         return ResponseEntity
-                .status(400)
+                .status(HttpStatus.BAD_REQUEST)
                 .body("Cannot use this endpoint to turn on time based switches, use time travelling endpoint");
     }
 
@@ -39,7 +40,7 @@ public final class ValidationError {
     public ResponseEntity<Object> handleIllegalArgument(final IllegalArgumentException ex,
                                                         final WebRequest request) {
         return ResponseEntity
-                .status(400)
+                .status(HttpStatus.BAD_REQUEST)
                 .body(ex.getMessage());
     }
 
