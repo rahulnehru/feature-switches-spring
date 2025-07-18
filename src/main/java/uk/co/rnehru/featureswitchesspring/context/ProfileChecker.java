@@ -24,7 +24,7 @@ public class ProfileChecker implements WebMvcConfigurer {
      * This constructor autowires the Environment bean and checks if the `toggling` profile is active.
      * @param env the Environment bean
      */
-    public ProfileChecker(@Autowired final Environment env) {
+    public ProfileChecker(final Environment env) {
         this.isTogglingActive = env.matchesProfiles("toggling");
         if (this.isTogglingActive) {
             LOGGER.info("Feature `toggling` is enabled.");

@@ -5,12 +5,7 @@ package uk.co.rnehru.featureswitchesspring.controller;
  */
 public abstract class AbstractFeatureSwitchController {
 
-    /**
-     * Default constructor for the abstract AbstractFeatureSwitchController class.
-     */
-    public AbstractFeatureSwitchController() {
-
-    }
+    private static final String SWITCHES_PREFIX = "switches.";
 
     /**
      * Appends the given context to the switch's context.
@@ -18,7 +13,7 @@ public abstract class AbstractFeatureSwitchController {
      * @return the context with the switches context appended
      */
     protected final String appendSwitchesToContextName(final String context) {
-        return "switches." + context;
+        return SWITCHES_PREFIX + context;
     }
 
 }

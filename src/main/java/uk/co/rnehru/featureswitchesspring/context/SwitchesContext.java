@@ -20,11 +20,4 @@ public final class SwitchesContext {
         return FeatureSwitches.getInstance();
     }
 
-    /**
-     * Default constructor for the SwitchesContext class.
-     */
-    public SwitchesContext() {
-
-    }
-
 }

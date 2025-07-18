@@ -2,6 +2,7 @@ package uk.co.rnehru.featureswitchesspring.controller.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Arrays;
@@ -27,14 +28,16 @@ public class ProfileInterceptor implements HandlerInterceptor {
     private final List<String> lockedEndpoints = List.of("time-travel", "toggle");
 
     @Override
+    @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception {
         if (!this.togglingEnabled && uriIsLockedPath(req.getRequestURI())) {
-            res.setStatus(501);
+            res.setStatus(HttpStatus.FORBIDDEN.value());
+            res.setContentType("text/plain");
             res.getWriter().write(INVALID_PROFILE_ERR);
+            res.getWriter().flush();
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     private boolean uriIsLockedPath(String uri) {

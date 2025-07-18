@@ -1,5 +1,6 @@
 package uk.co.rnehru.featureswitchesspring.controller.errorhandling;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,12 +18,7 @@ import java.util.function.Supplier;
 @ControllerAdvice(assignableTypes = {FeatureSwitchesController.class, SwitchToggleController.class})
 public final class ContextOrSwitchNotFound {
 
-    /**
-     * Default constructor for the ContextOrSwitchNotFound class.
-     */
-    public ContextOrSwitchNotFound() {
 
-    }
 
     /**
      * Handles when a context is not found.
@@ -50,6 +46,6 @@ public final class ContextOrSwitchNotFound {
 
     private final Supplier<ResponseEntity<Object>> returnNotFound = () ->
             ResponseEntity
-                    .status(404)
+                    .status(HttpStatus.NOT_FOUND)
                     .body("Could not find the feature switch");
 }

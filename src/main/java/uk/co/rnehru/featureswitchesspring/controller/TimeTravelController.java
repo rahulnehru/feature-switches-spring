@@ -57,7 +57,10 @@ public final class TimeTravelController {
     @PutMapping("/set")
     @Profile("toggling")
     public ResponseEntity<TimeTravelDto> setTime(@RequestBody TimeTravelDto request) {
-        LOGGER.info("Setting time to " + request.time() + " and clock running" + (request.running() ? "on" : "off"));
+        if (request == null || request.time() == null) {
+            throw new IllegalArgumentException("Time travel request must contain a valid time");
+        }
+        LOGGER.info("Setting time to {} and clock running {}", request.time(), request.running() ? "on" : "off");
         CLOCK.setTime(request.time(), request.running());
         logSwitchesActivated();
         return ok(returnCurrentClock());
@@ -92,7 +95,7 @@ public final class TimeTravelController {
         switches.getAllSwitches().values().stream()
                 .filter(s -> s instanceof DateTimeSwitch)
                 .filter(Switch::isOn)
-                .forEach(s -> LOGGER.info("Switch " + s.getName() + " is on"));
+                .forEach(s -> LOGGER.info("Switch {} is on", s.getName()));
     }
 
 }
