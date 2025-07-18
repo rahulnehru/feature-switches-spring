@@ -17,12 +17,7 @@ import java.util.function.Supplier;
 @ControllerAdvice(assignableTypes = {FeatureSwitchesController.class, SwitchToggleController.class})
 public final class ContextOrSwitchNotFound {
 
-    /**
-     * Default constructor for the ContextOrSwitchNotFound class.
-     */
-    public ContextOrSwitchNotFound() {
 
-    }
 
     /**
      * Handles when a context is not found.

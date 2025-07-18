@@ -47,7 +47,7 @@ public final class FeatureSwitchesController extends AbstractFeatureSwitchContro
      * @param switchName the name of the feature switch
      * @return the response entity with the feature switch
      */
-    @GetMapping("context/{context}/{switchName}")
+    @GetMapping("/context/{context}/{switchName}")
     public ResponseEntity<Switch> getFeatureSwitch(@PathVariable final String context,
                                                    @PathVariable final String switchName) {
         return ok(switches.getSwitch(appendSwitchesToContextName(context), switchName));

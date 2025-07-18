@@ -21,31 +21,31 @@ public final class ProfileTest {
     private MockMvc mockMvc;
 
     @Test
-    void toggleFeatureSwitch_returns501WhenProfileIsNotToggling() throws Exception {
+    void toggleFeatureSwitch_returnsForbiddenWhenProfileIsNotToggling() throws Exception {
         mockMvc.perform(put("/toggle/context/default/switchA"))
-                .andExpect(status().isNotImplemented())
+                .andExpect(status().isForbidden())
                 .andExpect(content().string(INVALID_PROFILE_ERR));
     }
 
     @Test
-    void resetFeatureSwitch_returns501WhenProfileIsNotToggling() throws Exception {
+    void resetFeatureSwitch_returnsForbiddenWhenProfileIsNotToggling() throws Exception {
         mockMvc.perform(put("/toggle/context/default/switchA/reset"))
-                .andExpect(status().isNotImplemented())
+                .andExpect(status().isForbidden())
                 .andExpect(content().string(INVALID_PROFILE_ERR));
     }
 
     @Test
-    void setTime_returns501WhenProfileIsNotToggling() throws Exception {
+    void setTime_returnsForbiddenWhenProfileIsNotToggling() throws Exception {
         String content = "{\"time\": \"2021-01-01T11:11:11.111Z\", \"running\": false}";
         mockMvc.perform(put("/time-travel/set").content(content).contentType("application/json"))
-                .andExpect(status().isNotImplemented())
+                .andExpect(status().isForbidden())
                 .andExpect(content().string(INVALID_PROFILE_ERR));
     }
 
     @Test
-    void resetTime_returns501WhenProfileIsNotToggling() throws Exception {
+    void resetTime_returnsForbiddenWhenProfileIsNotToggling() throws Exception {
         mockMvc.perform(delete("/time-travel/reset"))
-                .andExpect(status().isNotImplemented())
+                .andExpect(status().isForbidden())
                 .andExpect(content().string(INVALID_PROFILE_ERR));
     }
 

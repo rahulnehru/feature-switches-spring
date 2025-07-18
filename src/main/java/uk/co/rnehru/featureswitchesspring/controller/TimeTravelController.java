@@ -57,6 +57,9 @@ public final class TimeTravelController {
     @PutMapping("/set")
     @Profile("toggling")
     public ResponseEntity<TimeTravelDto> setTime(@RequestBody TimeTravelDto request) {
+        if (request == null || request.time() == null) {
+            throw new IllegalArgumentException("Time travel request must contain a valid time");
+        }
         LOGGER.info("Setting time to " + request.time() + " and clock running" + (request.running() ? "on" : "off"));
         CLOCK.setTime(request.time(), request.running());
         logSwitchesActivated();

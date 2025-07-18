@@ -73,7 +73,9 @@ public final class SwitchToggleController extends AbstractFeatureSwitchControlle
     }
 
     private final ThrowingConsumer<Switch> validateIsBoolean = (Switch s) -> {
-        assert s instanceof BooleanSwitch;
+        if (!(s instanceof BooleanSwitch)) {
+            throw new IllegalArgumentException("Switch is not a boolean switch");
+        }
     };
 
 }
